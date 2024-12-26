@@ -1,0 +1,46 @@
+@media screen and (max-width: 650px) {
+  .rating-box {
+    bottom: 1;
+    left: 0;
+    right: 0;
+    top: 90vh;
+    margin-right: 20px;
+  }
+
+  .rating-items {
+    flex-direction: row;
+    margin-top: 5px;
+  }
+
+  .like-item {
+    top: -2px;
+  }
+  .like-item sub {
+    bottom: -20px;
+  }
+}
+
+.like-item + hr {
+  margin-top: 5px;
+}
+
+.like-item svg[fill="#ee2828"] {
+  animation: scaling 0.5s both ease-in;
+}
+
+@keyframes scaling {
+  10%,
+  70% {
+    transform: scale(1.2);
+  }
+  0%,
+  50%,
+  100% {
+    transform: scale(1);
+  }
+}
+
+.content hr {
+  margin: 10px 15px;
+  border-color: #555;
+}

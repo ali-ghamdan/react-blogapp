@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  position: relative;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(10, 10%);
+  grid-template-rows: auto-fill;
+  grid-template-areas: "feeds feeds feeds feeds feeds feeds feeds my-feeds my-feeds my-feeds";
+  gap: 1px;
+  width: 100%;
+}
+
+.item {
+  /* display: grid; */
+  padding: 0.5rem;
+  margin: 10px;
+  margin-left: 35px;
+  margin-top: 30px;
+  /* Here's the trick: */
+  outline: 1px dashed magenta;
+}
+
+.container .item.feeds {
+  grid-area: feeds;
+}
+
+.container .item.my-feeds {
+  grid-area: my-feeds;
+
+  margin-left: 35px;
+}
+
+.container .sub-parent sub {
+  position: relative;
+}
+
+.container .sub-parent sub::before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 20px;
+  background-color: transparent;
+  bottom: 1px;
+  right: -30px;
+  border-radius: 11px;
+  border-top-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  box-shadow: -3px 3px #18181b;
+}
+
+@media screen and (max-width: 1026px) {
+  .container {
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(1, 100%);
+    grid-template-areas:
+      "feeds"
+      "my-feeds";
+  }
+
+  .container .item {
+    margin-top: 25px;
+    margin-left: 35px;
+    margin-bottom: 5px;
+  }
+}
+
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
+.row-span-2 {
+  grid-row: span 2 / span 2;
+}
+
+.create-post-sign {
+  cursor: pointer;
+  position: absolute;
+  right: 0%;
+  bottom: 0%;
+  transition: 0.25s;
+}
+
+.create-post-sign:hover {
+  /* width: 3.1rem;
+  height: 3.1rem; */
+  transform: scale(1.1);
+}
+
+.create-post-sign::before {
+  content: "";
+  position: absolute;
+  background-color: wheat;
+  width: 50%;
+  height: 5%;
+  border-radius: 12px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.create-post-sign::after {
+  content: "";
+  position: absolute;
+  background-color: wheat;
+  width: 50%;
+  height: 5%;
+  border-radius: 12px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
