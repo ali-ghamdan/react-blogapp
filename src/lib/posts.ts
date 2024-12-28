@@ -1,6 +1,31 @@
 import { commentsList, postData } from "./types";
 import { bRequest, TC } from "./utils";
 
+export async function createPost(
+  token: string | undefined | null,
+  title: string | undefined,
+  content: string | undefined
+): Promise<postData | null> {
+  if (!title || content) return null;
+  const [e1, d1] = await TC(() =>
+    bRequest(`/posts`, {
+      method: "POST",
+      headers: {
+        Authorization: token,
+      },
+      data: {
+        title,
+        content,
+      },
+    })
+  );
+  if (e1) {
+    console.error("ERROR creatingPost:", e1);
+    return null;
+  }
+  return d1?.data;
+}
+
 export async function getPost(
   token: string | undefined | null,
   id: string | undefined
@@ -16,6 +41,26 @@ export async function getPost(
   );
   if (e1) {
     console.error("ERROR gettingPost:", e1);
+    return null;
+  }
+  return d1?.data;
+}
+
+export async function delPost(
+  token: string | undefined | null,
+  id: string | undefined
+): Promise<{ success: boolean } | null> {
+  if (!id) return null;
+  const [e1, d1] = await TC(() =>
+    bRequest(`/posts/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: token,
+      },
+    })
+  );
+  if (e1) {
+    console.error("ERROR deletingPost:", e1);
     return null;
   }
   return d1?.data;

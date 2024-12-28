@@ -1,0 +1,19 @@
+#create-post::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+#create-post {
+  width: auto;
+  height: auto;
+  margin: 60px auto;
+  max-width: 600px;
+  padding: 10px;
+}
+
+#create-post[open] {
+  display: flex;
+  border-radius: 12px;
+}
+
+.create-post-sign:has(dialog[open]) {
+  cursor: auto;
+}

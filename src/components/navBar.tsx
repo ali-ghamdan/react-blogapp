@@ -8,8 +8,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { getUserShortName } from "@/lib/utils";
 import { searchPosts } from "@/lib/posts";
 import { createRoot } from "react-dom/client";
-import NotFoundPage from "./notFoundPage";
 import SearchResultCard from "./searchResultCard";
+import "./navBar.css";
 
 export default function NavBar() {
   const { auth, setAuth } = authStore();
@@ -91,7 +91,7 @@ export default function NavBar() {
               <div
                 id="search-results"
                 style={{ display: searchQuery === "" ? "none" : undefined }}
-                className="absolute w-full max-w-prose max-h-96 top-14 left-1/4 "
+                className="absolute w-auto px-12 max-h-96 top-14 "
               ></div>
             </>
           ) : (

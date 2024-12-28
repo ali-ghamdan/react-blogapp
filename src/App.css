@@ -23,7 +23,6 @@ body {
   margin-left: 35px;
   margin-top: 30px;
   /* Here's the trick: */
-  outline: 1px dashed magenta;
 }
 
 .container .item.feeds {
@@ -114,7 +113,6 @@ body {
   top: 50%;
   transform: translate(-50%, -50%) rotate(90deg);
 }
-
 
 @keyframes spin {
   from {

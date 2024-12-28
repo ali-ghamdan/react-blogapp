@@ -3,8 +3,8 @@ import NotFoundPage from "./notFoundPage";
 import { FormEvent, useEffect, useState } from "react";
 import { postData, RouteDirection } from "@/lib/types";
 import Loading from "./loading";
-import { createComment, getPost, toggleLike } from "@/lib/posts";
-import { CiHeart } from "react-icons/ci";
+import { createComment, delPost, getPost, toggleLike } from "@/lib/posts";
+import { CiHeart, CiTrash } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 
 import "./postPage.css";
@@ -58,6 +58,16 @@ export default function PostPage() {
     setCommentsPage(commentsPage);
   };
 
+  const deletePost = async () => {
+    const SUCCESS = await delPost(auth, postID.id);
+    if (SUCCESS?.success) {
+      alert("Post Deleted Successfully.");
+      setRoute(RouteDirection.HOME_PAGE);
+    } else {
+      alert("Post couldn't be delete.");
+    }
+  };
+
   useEffect(() => {}, [commentsPage]);
 
   return (
@@ -89,6 +99,18 @@ export default function PostPage() {
                     {post.likes.toLocaleString("en")}
                   </sub>
                 </div>
+                {post.isPoster && (
+                  <div
+                    onClick={deletePost}
+                    className="like-item relative cursor-pointer"
+                    title="like"
+                  >
+                    <CiTrash className="size-6" />
+                    <sub className="absolute -bottom-3 font-bold ml-2 mt-1">
+                      Delete
+                    </sub>
+                  </div>
+                )}
               </div>
             </div>
           </div>

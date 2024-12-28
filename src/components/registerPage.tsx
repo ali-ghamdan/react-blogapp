@@ -5,7 +5,6 @@ import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { userLogin, userProfile, userRegister } from "@/lib/user";
-import Circle from "@/assets/circle-sketch.svg";
 
 export default function RegisterPage() {
   const { auth, setAuth } = authStore();

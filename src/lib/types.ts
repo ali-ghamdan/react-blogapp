@@ -58,6 +58,7 @@ export interface postData {
   likes: number;
   commentsCount: number;
   isLikedByAuthorizedUser?: boolean;
+  isPoster: boolean;
 }
 
 export interface commentData {
